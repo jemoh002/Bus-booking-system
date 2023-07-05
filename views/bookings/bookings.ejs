@@ -1,0 +1,52 @@
+<% layout('./layouts/boilerplate.ejs')%>
+    <h1>All Bookings</h1>
+    <% if (buses.length>0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Destination</th>
+                    <th>Date</th>
+                    <th>Booked Seats</th>
+                    <th>Seat Diagram</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% buses.forEach(bus=> { %>
+                    <tr>
+                        <td>
+                            <%= bus.destination %>
+                        </td>
+                        <td>
+                            <%= bus.date.toDateString() %>
+                        </td>
+                        <td>
+                            <%= bus.bookedSeats.length %>
+                        </td>
+                        <td>
+                            <div class="seat-diagram">
+                                <% for( let row=1; row <=5 ; row++ ) { %>
+                                    <div class="seat-row">
+                                        <% for( let seat=1; seat <=4; seat++ ) { %>
+                                            <% const seatNumber=(row-1) * 4 +seat; %>
+                                                <% if (bus.bookedSeats.includes(seatNumber)) { %>
+                                                    <button class="seat booked">
+                                                        <%= seatNumber %>
+                                                    </button>
+                                                    <% } else {%>
+                                                        <button class="seat available">
+                                                            <%= seatNumber %>
+                                                        </button>
+                                                        <% } %>
+                                                            <% } %>
+                                    </div>
+                                    <% } %>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+
+        <% } else {%>
+            <p>No bookings available.</p>
+            <% } %>

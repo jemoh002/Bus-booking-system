@@ -1,0 +1,20 @@
+<% layout('./layouts/boilerplate.ejs')%>
+    <form action="/routes" method="POST">
+        <label for="startingPoint">Starting Point</label>
+        <input type="text" id="startingPoint" name="startingPoint">
+
+        <label for="destination">Destination: </label>
+        <input type="text" id="destination" name="destination">
+
+        <label for="distance">Distance: </label>
+        <input type="text" id="distance" name="distance">
+
+        <label for="fare">Fare: </label>
+        <input type="text" id="fare" name="fare">
+
+        <label for="estimated_travelTime">Estimated travel time (hrs): </label>
+        <input type="text" id="estimated_travelTime" name="estimated_travelTime" value="">
+
+
+        <button>Submit</button>
+    </form>

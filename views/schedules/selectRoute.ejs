@@ -1,0 +1,24 @@
+<% layout('./layouts/boilerplate.ejs')%>
+    <h1>Select a route</h1>
+    <% routes.forEach(route=> { %>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= route.startingPoint %> to <%= route.destination %>
+                </h5>
+                <p class="card-text">Distance:
+                    <%= route.distance %>
+                </p>
+                <p class="card-text">Fare:
+                    <%= route.fare %>
+                </p>
+                <p class="card-text">Estimated time(hrs):
+                    <%= route.estimated_travelTime %>
+                </p>
+                <a href="/schedules/<%= station._id %>/<%= route._id %>/new" class="btn btn-primary">Select route</a>
+            </div>
+        </div>
+
+        <% }) %>
+            <a href="/routes/new">Add route</a>

@@ -1,0 +1,11 @@
+<% layout('./layouts/boilerplate')%>
+    <h1>Edit station page</h1>
+    <form action="/stations/<%= station._id %>?_method=PUT" method="POST">
+        <label for="location">Enter location: </label>
+        <input type="text" name="location" id="location" value="<%= station.location %>" required>
+        <button>Edit station</button>
+    </form>
+    <form action="/stations/<%= station._id %>?_method=DELETE" method="POST">
+        <button>Delete station</button>
+    </form>
+    <a href="/stations">Back to stations</a>

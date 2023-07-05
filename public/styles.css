@@ -1,0 +1,120 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/*
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+*/
+
+/* Booking form styles */
+.booking-form {
+    margin-bottom: 20px;
+}
+
+.booking-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="date"],
+.booking-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+.seat-diagram {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.seat {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: ponter;
+}
+
+.seat.available {
+    background-color: #42b983;
+    color: #fff;
+}
+
+.seat.booked {
+    background-color: #f44336;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+/* Booking page styles */
+table {
+    width: 100px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* General styles */
+error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+button.seat:hover {
+    background-color: orange;
+}
+
+.selected {
+    background-color: yellow;
+}
+
+.btn-selected {
+    background-color: #28a745;
+}
+
+.btn-booked {
+    background-color: #dc3545;
+    pointer-events: none;
+}
+
+.noDisplay {
+    display: none;
+}

@@ -1,0 +1,25 @@
+<% layout('./layouts/boilerplate.ejs') %>
+    <h1>Shedule a bus</h1>
+    <form action="/schedules/<%= station._id %>/<%= route._id %>" method="POST">
+        <p>From: <%= route.startingPoint %> to <%= route.destination %>
+        </p>
+
+        <label for="busId">Select a bus:</label>
+        <select id="busId" name="busId">
+            <% station.busId.forEach(bus=> { %>
+                <% if (!bus.isScheduled) { %>
+                    <option value="<%= bus._id %>">
+                        <%= bus.busType %>
+                            <%= bus.numberPlate %>
+                    </option>
+                    <% } %>
+                        <% }) %>
+        </select>
+
+        <div>
+            <label for="departureDate">Enter scheduled departure date</label>
+            <input type="departureDate" name="departureDate" id="departureDate" placeholder="mm/dd/yy" required>
+        </div>
+        <button>Save schedule</button>
+    </form>
+    <a href="/schedules/<%= station._id %>">Back to schedules</a>

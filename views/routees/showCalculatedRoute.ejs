@@ -1,0 +1,12 @@
+<% layout('./layouts/boilerplate')%>
+    <h1>This is the calculated route</h1>
+    <form action="/routes/calculateroute" method="POST">
+        <label for="start">Enter start vertex</label>
+        <input type="text" id="start" name="start" value="<%= start %>" required>
+
+        <label for="end">Enter end vertex</label>
+        <input type="text" id="end" name="end" value="<%= end %>" required>
+        <div>The path is: <%= path %>
+        </div>
+
+    </form>

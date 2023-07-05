@@ -1,0 +1,21 @@
+<% layout('./layouts/boilerplate.ejs') %>
+    <form action="/routes/<%= route._id %>?_method=PUT" method="POST">
+        <label for="startingPoint">Starting Point</label>
+        <input type="text" id="startingPoint" name="startingPoint" value="<%= route.startingPoint %>">
+
+        <label for="destination">Destination: </label>
+        <input type="text" id="destination" name="destination" value="<%= route.destination %>">
+
+        <label for="distance">Distance: </label>
+        <input type="text" id="distance" name="distance" value="<%= route.distance %>">
+
+        <label for="fare">Fare: </label>
+        <input type="text" id="fare" name="fare" value="<%= route.fare %>">
+
+        <button>Edit station</button>
+
+    </form>
+    <a href="/routes">Back to routes</a>
+    <form action="/routes/<%= route._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger">Delete</button>
+    </form>

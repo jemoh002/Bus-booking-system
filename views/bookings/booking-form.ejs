@@ -1,0 +1,137 @@
+<% layout('./layouts/boilerplate.ejs')%>
+
+    <div class="container row">
+        <div class="col-sm-6">
+            <table class="mx-auto">
+                <tbody>
+                    <tr>
+                        <td colspan="1">
+                            <div>Door</div>
+                        </td>
+                        <td colspan="1">
+                            <div></div>
+                        </td>
+                        <td colspan="1">
+                            <div></div>
+                        </td>
+                        <td colspan="2">
+                            <div class="btn btn-xs btn-block btn-danger">DRIVER</div>
+                        </td>
+                    </tr>
+
+                    <% const bus=schedule[0].busID %>
+                        <% const capacity=bus.capacity/4 %>
+                            <% for( let row=1; row < capacity; row++ ) { %>
+                                <tr>
+                                    <td colspan="1">
+                                        <span class="btn btn-warning btn-block seat">
+                                            <%= (row-1)*4+1 %>
+                                        </span>
+                                    </td>
+
+                                    <td colspan="1">
+                                        <span class="btn btn-warning btn-block seat">
+                                            <%= (row-1)*4+2 %>
+                                        </span>
+                                    </td>
+
+                                    <td colspan="1">
+                                        <div></div>
+                                    </td>
+
+                                    <td colspan="1">
+                                        <span class="btn btn-warning btn-block seat">
+                                            <%= (row-1)*4+3 %>
+                                        </span>
+                                    </td>
+
+                                    <td colspan="1">
+                                        <span class="btn btn-warning btn-block seat">
+                                            <%= (row-1)*4+4 %>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <% } %>
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-6">
+            <div>
+                <table>
+                    <tr>
+                        <th>
+                            Route
+                        </th>
+                        <th>
+                            Time
+                        </th>
+                        <th>Fare</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%= schedule[0].departure %> to
+                                <%= schedule[0].destination %>
+                        </td>
+                        <td>
+                            <%= schedule[0].departureDate %>
+                        </td>
+                        <td id="fare">
+                            <%= schedule[0].routeID.fare %>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="noDisplay">
+                <table id="myTable" class="addData">
+                    <thead>
+                        <tr>
+                            <th>Booked Seat</th>
+                            <th>Fare</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tableBody">
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th id="totalFare">0</th>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+
+            <div>
+                <form class="row g-3" action="/book/<%= schedule[0].busID._id %>" method="POST" class="booking-form"
+                    id="booking-form">
+
+
+                    <div>
+                        <label for="firstName">First Name:</label>
+                        <input type="text" name="firstName" id="firstName" required><br><br>
+
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" name="lastName" id="lastName" required><br><br>
+
+
+                        <label for="phone">Phone Number:</label>
+                        <input type="text" name="phone" id="phone" required><br><br>
+
+                        <input type="hidden" name="selectedSeats" id="selectedSeatsInput">
+                        <input type="hidden" name="amount" id="amount">
+                        <input type="submit" value="Pay and Book" class="btn btn-primary">
+
+
+                        <input type="text" id="noDisplay" value="<%= schedule[0].busID._id %>">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,19 @@
+<% layout('./layouts/boilerplate.ejs') %>
+    <h1>These are the stations</h1>
+    <% stations.forEach(station=> { %>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%= station.location %>
+                </h5>
+                <p class="card-text">This is the location
+
+                </p>
+                <a href="/stations/<%= station._id %>/buses" class="btn btn-primary">View Buses</a>
+                <a href="/stations/<%= station._id %>/edit">Edit Station</a>
+                <a href="/schedules/<%= station._id %>">View schedules</a>
+            </div>
+        </div>
+        <% }) %>
+            <a href="/stations/new" class="btn btn-primary">Add station</a>

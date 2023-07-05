@@ -1,0 +1,29 @@
+<% layout('./layouts/boilerplate.ejs') %>
+    <h1>
+        <%= station.location %> Station
+    </h1>
+    <div class="card" style="width: 40rem;">
+        <div class="card-body">
+            <h5 class="card-title">
+                <%= schedule.departure %> to
+                    <%= schedule.destination %>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">
+                Bus Type: <%= schedule.busID.busType %>
+            </h6>
+            <h6 class="card-subtitle mb-2 text-body-secondary">
+                Number Plate: <%= schedule.busID.numberPlate%>
+            </h6>
+
+            <p class="card-text">
+                Departure date: <%= schedule.departureDate %>
+            </p>
+            <div>
+                <form action="/schedules/<%= station._id %>/<%= schedule._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete schedule</button>
+                </form>
+                <a href="/schedules/<%= station._id %>">Back to schedules</a>
+            </div>
+
+        </div>
+    </div>

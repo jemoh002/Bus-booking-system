@@ -1,0 +1,38 @@
+<% layout('./layouts/boilerplate')%>
+
+
+    <h1>Registered buses in <%= station.location %> station</h1>
+    <% if (station.busId.length===0) { %>
+        <p>There are no buses to display</p>
+
+        <% } else {%>
+            <table>
+                <tr>
+                    <th>Bus Type</th>
+                    <th>Number Plate</th>
+                    <th>Capacity</th>
+                    <th></th>
+                </tr>
+                <% station.busId.forEach(bus=> { %>
+                    <tr>
+                        <td>
+                            <%= bus.busType %>
+                        </td>
+                        <td>
+                            <%= bus.numberPlate %>
+                        </td>
+                        <td>
+                            <%= bus.capacity %>
+                        </td>
+                        <td>
+                            <a href="/stations/<%= station._id %>/buses/<%= bus._id %>/edit">Edit bus</a>
+
+                        </td>
+                    </tr>
+                    <% }) %>
+
+            </table>
+            <% } %>
+
+                <a href="/stations/<%= station._id %>/buses/new">Add Bus</a>
+                <a href="/stations">Back to stations</a>

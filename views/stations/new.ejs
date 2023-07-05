@@ -1,0 +1,7 @@
+<% layout('./layouts/boilerplate.ejs') %>
+    <h1>New Station</h1>
+    <form action="/stations" method="POST">
+        <label for="location">Enter location: </label>
+        <input type="text" name="location" id="location">
+        <button>Save</button>
+    </form>

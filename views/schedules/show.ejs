@@ -1,0 +1,16 @@
+<% layout('./layouts/boilerplate.ejs') %>
+    <h1>Schedules for <%= station.location %> station
+    </h1>
+    <% schedules.forEach(schedule=> { %>
+        <div>
+
+            <%= schedule.busID.busType %>
+                <%= schedule.busID.numberPlate %>
+                    <%= schedule.departure %>
+                        <%= schedule.destination %>
+                            <%= schedule.departureDate %>
+                                <a href="/schedules/<%= station._id %>/<%= schedule._id %>">View schedule</a>
+
+        </div>
+        <% }) %>
+            <a href="/schedules/<%= station._id %>/selectRoute">Add a schedule</a>

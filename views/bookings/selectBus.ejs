@@ -1,0 +1,62 @@
+<% layout('./layouts/boilerplate.ejs')%>
+    <div>
+        <form action="/queryBus" method="POST">
+            <label for="departure">Departure point</label>
+            <input type="text" name="departure" id="departure" value="<%= departure %>"
+                placeholder="departure e.g. Nairobi">
+
+            <label for="destination">destination </label>
+            <input type="text" name="destination" id="destination" value="<%= destination %>"
+                placeholder="destination e.g. Kisumu">
+
+            <button class="btn btn-primary">
+                <!-- <i class="fa-thin fa-magnifying-glass"></i> -->
+                Search
+            </button>
+
+        </form>
+    </div>
+    <h1>Select from available buses</h1>
+    <% if (schedules.length>0) { %>
+        <% schedules.forEach(schedule=> { %>
+            <% let bus=schedule.busID %>
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Guardian Coach</h5>
+                                <h6>
+                                    Departure: <%= schedule.departureDate %>
+                                </h6>
+                                <hr>
+                                <div>
+                                    <p class="card-text">
+                                        <%= schedule.departure %> to
+                                            <%= schedule.destination %>
+                                    </p>
+                                    <p class="card-text">
+                                        <%= bus.busType%>
+                                    </p>
+                                    <p class="card-text">
+                                        <%= bus.capacity-bus.seatsBooked.length %> available seats
+                                    </p>
+                                    <p class="card-text">Fare:
+                                        <%= schedule.routeID.fare %>
+                                    </p>
+                                </div>
+
+                                <form action="/book/<%= bus._id %>">
+                                    <button class="btn btn-primary">Book seats</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+
+                    <% } else { %>
+                        <p>There is no schedule for that route</p>
+                        <% } %>

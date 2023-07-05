@@ -1,0 +1,18 @@
+<% layout('./layouts/boilerplate')%>
+
+    <h1>Add Bus to <%= station.location %> station
+    </h1>
+    <form action="/stations/<%= station._id %>/buses" method="POST">
+        <label for="busType">Bus Type: </label>
+        <input type="text" name="busType" placeholder="type" id="busType" required>
+
+        <label for="numberPlate">Number Plate: </label>
+        <input type="text" name="numberPlate" placeholder="type" id="numberPlate" required>
+
+        <label for="capacity">Capacity: </label>
+        <input type="number" name="capacity" placeholder="capacity" id="capacity" value="60" required>
+
+        <label for="seatsBooked">seatsBooked: </label>
+        <input type="number" name="seatsBooked" id="seatsBooked" value="[]" disabled>
+
+        <button>Submit</button>
